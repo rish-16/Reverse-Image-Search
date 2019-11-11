@@ -39,6 +39,7 @@ class Extractor:
             cur = path + img_dir[i]
             image_id = img_dir[i].split('.')[0]
             img = Image.open(cur)
+            img = img.resize((128, 128), Image.ANTIALIAS)
             img = np.array(img)
             
             self.images[image_id] = img
@@ -57,11 +58,8 @@ class Extractor:
     def find_pairs(self):
         images = set(self.images)
         captions = set(self.captions)
+        pairs = []    
         for key in images.intersection(captions):
-            print (key, self.captions[key])
-        
-ext = Extractor()		
-ext.read_captions('../data/Flickr8k_text/Flickr8k.token.txt')
-ext.read_images('../data/Flicker8k_Dataset/')
-
-ext.find_pairs()
+            pairs.append([self.captions[key], self.images[key]])
+            
+        return pairs
