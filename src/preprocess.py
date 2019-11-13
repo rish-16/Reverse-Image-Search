@@ -60,6 +60,6 @@ class Extractor:
         captions = set(self.captions)
         pairs = []    
         for key in images.intersection(captions):
-            pairs.append([self.captions[key], self.images[key]])
+            pairs.append([self.captions[key][-1].strip("\t"), self.images[key]])
             
         return pairs
