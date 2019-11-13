@@ -20,22 +20,18 @@ pairs = array(ext.find_pairs())
 
 images = pairs[:, 1]
 captions = pairs[:, 0]
+print (captions[0])
+  
+# tokenizer = Tokenizer()
+# tokenizer.fit_on_texts(captions)
 
-for i in range(len(captions)):
-	for j in range(len(captions[i])):
-		captions[i][j] = captions[i][j].lower()
-		captions[i][j] = captions[i][j].maketrans("", "", string.punctuation)
-	
-tokenizer = Tokenizer()
-tokenizer.fit_on_texts(captions)
+# print ("Vocabulary: {}".format(len(tokenizer.word_index)))
 
-print ("Vocabulary: {}".format(len(tokenizer.word_index)))
-
-try: 
-	plt.imshow(images[0])
-	plt.title(repr(captions[0]))
-	plt.show()
-except:
-	plt.imread(images[0])
-	plt.title(repr(captions[0]))
-	plt.show()
+# try: 
+# 	plt.imshow(images[0])
+# 	plt.title(repr(captions[0]))
+# 	plt.show()
+# except:
+# 	plt.imread(images[0])
+# 	plt.title(repr(captions[0]))
+# 	plt.show()
