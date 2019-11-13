@@ -17,11 +17,7 @@ class Extractor:
                 cur = data[i].strip().split('#')
                 image_id = cur[0].split('.')[0]
                 caption = cur[1][1:]
-                if image_id in self.captions:
-                    self.captions[image_id].append(caption)
-                else:
-                    self.captions[image_id] = []
-                    self.captions[image_id].append(caption)
+                self.captions[image_id] = caption
         
     def preview_captions(self, n):
         i = 0
@@ -43,7 +39,6 @@ class Extractor:
             img = np.array(img)
             
             self.images[image_id] = img
-            self.images[image_id]
             
     def preview_images(self, n):
         fig, axs = plt.subplots(n)
@@ -60,6 +55,6 @@ class Extractor:
         captions = set(self.captions)
         pairs = []    
         for key in images.intersection(captions):
-            pairs.append([self.captions[key][-1].strip("\t"), self.images[key]])
+            pairs.append([self.captions[key].strip("\t"), self.images[key]])
             
         return pairs

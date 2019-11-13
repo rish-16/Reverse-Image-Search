@@ -36,7 +36,6 @@ def encode_sequences(tokenizer, seq_len, lines):
 	return sequence
 
 xtrain, ytrain, xtest, ytest = train_test_split(images, captions, test_size=.2, random_state=12)
-print (ytrain)
 
 ytrain = encode_sequences(tokenizer, seq_len, ytrain)
 ytest = encode_sequences(tokenizer, seq_len, ytest)
