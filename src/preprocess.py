@@ -52,9 +52,9 @@ class Extractor:
         
     def find_pairs(self):
         images = set(self.images)
-        captions = set(self.captions)
-        pairs = []    
-        for key in images.intersection(captions):
-            pairs.append([self.captions[key].strip("\t"), self.images[key]])
+        pairs = []
+        for key, value in self.images.items():
+            if key in self.captions:
+                pairs.append([self.captions[key].strip("\t"), value])
             
         return pairs
